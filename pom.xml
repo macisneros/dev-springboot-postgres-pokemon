@@ -5,8 +5,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.4</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>2.7.9</version>
+        <relativePath/>
     </parent>
     <groupId>com.example</groupId>
     <artifactId>dev-springboot-postgres-pokemon</artifactId>
@@ -27,7 +27,6 @@
         <url/>
     </scm>
     <properties>
-        <java.version>24</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -51,6 +50,15 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
