@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("/pokemons")
+@RequestMapping("/pokemon")
 public class PokemonController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/all")
