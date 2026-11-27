@@ -13,6 +13,7 @@ import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 @Configuration
 public class JwtConfig {
@@ -21,7 +22,13 @@ public class JwtConfig {
 
     @Bean
     public SecretKey jwtSigningKey(AppSecurityProperties properties) {
-        byte[] secret = properties.getJwt().getSecret().getBytes(StandardCharsets.UTF_8);
+        String rawSecret = properties.getJwt().getSecret();
+        byte[] secret;
+        try {
+            secret = Base64.getDecoder().decode(rawSecret);
+        } catch (IllegalArgumentException e) {
+            secret = rawSecret.getBytes(StandardCharsets.UTF_8);
+        }
         return new SecretKeySpec(secret, "HmacSHA256");
     }
 
